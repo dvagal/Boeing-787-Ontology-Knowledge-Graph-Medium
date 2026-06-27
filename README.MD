@@ -9,7 +9,7 @@
 
 ## Overview
 
-This folder contains three ontologies at different levels of abstraction (grain), modelling the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. The ontologies are encoded in OWL/Turtle (.ttl) format, compatible with Protege, Apache Jena, and other semantic web tools.
+This repo contains three ontologies at different levels of abstraction (grain), modelling the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. The ontologies are encoded in OWL/Turtle (.ttl) format, compatible with Protege, Apache Jena, and other semantic web tools.
 
 | Level | File | Grain | Audience | Focus |
 |-------|------|-------|----------|-------|
