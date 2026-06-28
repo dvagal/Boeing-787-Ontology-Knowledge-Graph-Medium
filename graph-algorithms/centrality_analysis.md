@@ -2,7 +2,7 @@
 
 **Scope:** Graph-centrality analysis of the Boeing 787 high-level systems
 ontology (`b787/artifacts/v1/ontologies/L1_high_level_systems.ttl`, loaded into
-Neo4j via `L1_high_level_systems.cypher`), focused on two relationship types:
+Neo4j via `../knowledge-graph/cypher/L1_high_level_systems.cypher`), focused on two relationship types:
 
 - **`DEPENDS_ON`** — structural dependency (what the aircraft relies on)
 - **`CAN_PROPAGATE_FAULT_TO`** — fault-cascade / domino paths
@@ -24,7 +24,7 @@ Neo4j via `L1_high_level_systems.cypher`), focused on two relationship types:
 1. **Load the L1 graph** (and do **not** run the teardown section at the bottom
    of the load script):
    ```bash
-   cypher-shell -f ../ontologies/L1_high_level_systems.cypher
+   cypher-shell -f ../knowledge-graph/cypher/L1_high_level_systems.cypher
    ```
 2. **Install Neo4j Graph Data Science (GDS) 2.x.** Verify:
    ```cypher
@@ -158,7 +158,7 @@ additions documented in `../ontologies/L1_high_level_systems.md`).
 
 ## 7. Source
 
-Graph derived from `b787/artifacts/v1/ontologies/L1_high_level_systems.ttl`.
+Graph derived from `../ontologies/L1_high_level_systems.ttl`.
 Fuel- and Cargo-system edges and their citations are documented in
 `b787/artifacts/v1/ontologies/L1_high_level_systems.md`. Algorithms:
 Neo4j Graph Data Science library (`gds.pageRank`, `gds.betweenness`), GDS 2.x.
