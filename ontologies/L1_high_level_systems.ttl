@@ -1,0 +1,263 @@
+@prefix b787: <http://aviation-research.org/ontology/b787#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+# ONTOLOGY LEVEL 1: HIGH-LEVEL SYSTEM INTERCONNECTEDNESS
+# Boeing 787 Dreamliner - Coarsest Grain
+# =============================================================================
+
+<http://aviation-research.org/ontology/b787> rdf:type owl:Ontology ;
+    rdfs:label "Boeing 787 High-Level Systems Ontology (L1)" ;
+    rdfs:comment "Captures the major aircraft systems and their interconnections at the highest abstraction level. Suitable for non-technical audiences." .
+
+# -----------------------------------------------------------------------------
+# CLASS HIERARCHY
+# -----------------------------------------------------------------------------
+
+b787:AircraftSystem rdf:type owl:Class ;
+    rdfs:label "Aircraft System" ;
+    rdfs:comment "A top-level functional system of the Boeing 787 Dreamliner" .
+
+b787:FlightCriticalSystem rdf:type owl:Class ;
+    rdfs:subClassOf b787:AircraftSystem ;
+    rdfs:label "Flight-Critical System" ;
+    rdfs:comment "System whose failure can lead to loss of aircraft (Level A catastrophic)" .
+
+b787:NonFlightCriticalSystem rdf:type owl:Class ;
+    rdfs:subClassOf b787:AircraftSystem ;
+    rdfs:label "Non-Flight-Critical System" ;
+    rdfs:comment "System whose failure does not directly cause loss of aircraft but may degrade operations" .
+
+b787:SharedInfrastructure rdf:type owl:Class ;
+    rdfs:subClassOf b787:AircraftSystem ;
+    rdfs:label "Shared Infrastructure" ;
+    rdfs:comment "Infrastructure shared between flight-critical and non-critical systems -- the coupling point" .
+
+# -----------------------------------------------------------------------------
+# OBJECT PROPERTIES (RELATIONSHIPS)
+# -----------------------------------------------------------------------------
+
+b787:dependsOn rdf:type owl:ObjectProperty ;
+    rdfs:label "depends on" ;
+    rdfs:comment "System A depends on System B for power, data, or control" ;
+    rdfs:domain b787:AircraftSystem ;
+    rdfs:range b787:AircraftSystem .
+
+b787:sharesInfrastructureWith rdf:type owl:ObjectProperty ;
+    rdfs:label "shares infrastructure with" ;
+    rdfs:comment "Two systems share common power buses or data networks" ;
+    rdf:type owl:SymmetricProperty ;
+    rdfs:domain b787:AircraftSystem ;
+    rdfs:range b787:AircraftSystem .
+
+b787:canPropagateFaultTo rdf:type owl:ObjectProperty ;
+    rdfs:label "can propagate fault to" ;
+    rdfs:comment "A fault in System A can cascade to System B" ;
+    rdfs:domain b787:AircraftSystem ;
+    rdfs:range b787:AircraftSystem .
+
+b787:providesBackupFor rdf:type owl:ObjectProperty ;
+    rdfs:label "provides backup for" ;
+    rdfs:comment "System A is the emergency/backup power or control source for System B" ;
+    rdfs:domain b787:AircraftSystem ;
+    rdfs:range b787:AircraftSystem .
+
+b787:monitorsHealthOf rdf:type owl:ObjectProperty ;
+    rdfs:label "monitors health of" ;
+    rdfs:comment "System A monitors and reports faults in System B" ;
+    rdfs:domain b787:AircraftSystem ;
+    rdfs:range b787:AircraftSystem .
+
+# -----------------------------------------------------------------------------
+# INSTANCES: MAJOR SYSTEMS
+# -----------------------------------------------------------------------------
+
+# === SHARED INFRASTRUCTURE (The Convergence Hub) ===
+
+b787:ElectricalPowerSystem rdf:type b787:SharedInfrastructure ;
+    rdfs:label "Electrical Power Generation & Distribution System (EPGSS)" ;
+    rdfs:comment "Generates and distributes 1.45 MW across 235V AC, 115V AC, ±270V HVDC, 28V DC buses. Powers ALL other systems." .
+
+b787:CommonCoreSystem rdf:type b787:SharedInfrastructure ;
+    rdfs:label "Data Network (CCS/CDN)" ;
+    rdfs:comment "ARINC 664 shared computing and networking platform connecting 22 flight-critical + 28 non-critical systems. Central convergence hub." .
+
+# === FLIGHT-CRITICAL SYSTEMS ===
+
+b787:EngineControlSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Engine Control (FADEC)" ;
+    rdfs:comment "Full Authority Digital Engine Control -- commands fuel flow, thrust. Dual-channel redundancy." .
+
+b787:FlightControlSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Flight Control System (FCM)" ;
+    rdfs:comment "Fly-by-wire: three Flight Control Modules (L/R/C) controlling ailerons, spoilers, elevators, rudder." .
+
+b787:HydraulicSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Hydraulic System" ;
+    rdfs:comment "Provides hydraulic power for flight control actuators and landing gear. Includes electric motor pumps." .
+
+b787:StabilizerSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Horizontal Stabilizer System" ;
+    rdfs:comment "Horizontal stabilizer trim via electric motor control unit (EMCU) and sensors." .
+
+b787:NavigationSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Navigation & Flight Management" ;
+    rdfs:comment "Flight Management System, navigation sensors, autopilot." .
+
+b787:CrewAlertingSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Crew Alerting & Display System" ;
+    rdfs:comment "EICAS, primary flight displays, stall/overspeed warnings." .
+
+b787:FuelSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Fuel System" ;
+    rdfs:comment "Fuel storage, distribution, and engine feed. Includes fuel control switches." .
+
+b787:APUSystem rdf:type b787:FlightCriticalSystem ;
+    rdfs:label "Auxiliary Power Unit (APU)" ;
+    rdfs:comment "Emergency backup power generation. Requires stable HV source to start." .
+
+# === NON-FLIGHT-CRITICAL SYSTEMS ===
+
+b787:EnvironmentalControlSystem rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "Environmental Control System (ECS)" ;
+    rdfs:comment "Cabin pressurization, air conditioning, temperature control via electric cabin air compressors." .
+
+b787:NitrogenGenerationSystem rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "Nitrogen Generation System (NGS / Fire Inerter)" ;
+    rdfs:comment "Fuel tank inerting for fire/explosion prevention. Powered by ±270V HVDC." .
+
+b787:InFlightEntertainment rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "In-Flight Entertainment (IFE)" ;
+    rdfs:comment "Passenger entertainment systems sharing CCS network and power buses." .
+
+b787:CabinSystems rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "Cabin Systems (Lighting, Crew Call, Climate)" ;
+    rdfs:comment "Cabin lighting, crew call panels, galley power -- all on shared network." .
+
+b787:CargoSystem rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "Cargo Environmental Monitoring" ;
+    rdfs:comment "Cargo bay temperature, smoke detection, ventilation." .
+
+b787:MaintenanceMonitoring rdf:type b787:NonFlightCriticalSystem ;
+    rdfs:label "Maintenance & Monitoring (CMCF/ACMF)" ;
+    rdfs:comment "Central Maintenance Computing, Aircraft Condition Monitoring, ACARS reporting." .
+
+# -----------------------------------------------------------------------------
+# RELATIONSHIPS: SYSTEM INTERCONNECTIONS
+# -----------------------------------------------------------------------------
+
+# Everything depends on electrical power
+b787:CommonCoreSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:EngineControlSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:FlightControlSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:HydraulicSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:StabilizerSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:NavigationSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:CrewAlertingSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:EnvironmentalControlSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:NitrogenGenerationSystem b787:dependsOn b787:ElectricalPowerSystem .
+b787:InFlightEntertainment b787:dependsOn b787:ElectricalPowerSystem .
+b787:CabinSystems b787:dependsOn b787:ElectricalPowerSystem .
+b787:APUSystem b787:dependsOn b787:ElectricalPowerSystem .
+
+# Everything communicates through CCS
+b787:EngineControlSystem b787:dependsOn b787:CommonCoreSystem .
+b787:FlightControlSystem b787:dependsOn b787:CommonCoreSystem .
+b787:HydraulicSystem b787:dependsOn b787:CommonCoreSystem .
+b787:StabilizerSystem b787:dependsOn b787:CommonCoreSystem .
+b787:NavigationSystem b787:dependsOn b787:CommonCoreSystem .
+b787:CrewAlertingSystem b787:dependsOn b787:CommonCoreSystem .
+b787:EnvironmentalControlSystem b787:dependsOn b787:CommonCoreSystem .
+b787:InFlightEntertainment b787:dependsOn b787:CommonCoreSystem .
+b787:CabinSystems b787:dependsOn b787:CommonCoreSystem .
+b787:MaintenanceMonitoring b787:dependsOn b787:CommonCoreSystem .
+
+# Shared infrastructure creates coupling
+b787:EngineControlSystem b787:sharesInfrastructureWith b787:InFlightEntertainment .
+b787:FlightControlSystem b787:sharesInfrastructureWith b787:CabinSystems .
+b787:StabilizerSystem b787:sharesInfrastructureWith b787:EnvironmentalControlSystem .
+b787:NitrogenGenerationSystem b787:sharesInfrastructureWith b787:HydraulicSystem .
+
+# Fault propagation paths
+b787:ElectricalPowerSystem b787:canPropagateFaultTo b787:CommonCoreSystem .
+b787:ElectricalPowerSystem b787:canPropagateFaultTo b787:EngineControlSystem .
+b787:ElectricalPowerSystem b787:canPropagateFaultTo b787:FlightControlSystem .
+b787:CommonCoreSystem b787:canPropagateFaultTo b787:EngineControlSystem .
+b787:CommonCoreSystem b787:canPropagateFaultTo b787:FlightControlSystem .
+b787:CommonCoreSystem b787:canPropagateFaultTo b787:MaintenanceMonitoring .
+b787:EnvironmentalControlSystem b787:canPropagateFaultTo b787:ElectricalPowerSystem .
+b787:NitrogenGenerationSystem b787:canPropagateFaultTo b787:ElectricalPowerSystem .
+
+# -----------------------------------------------------------------------------
+# FUEL SYSTEM INTERCONNECTIONS (evidence-based additions)
+# The 787 is a "more-electric" aircraft: fuel boost/transfer pumps, fuel
+# control switch solenoids, and fuel quantity indication are all electrically
+# powered and CDN-hosted. The Fuel System is therefore BOTH a downstream victim
+# of electrical/network faults AND the upstream cause of engine thrust loss --
+# making it the central domino in the AI 171 cascade, not the orphan node it
+# was originally modelled as.
+# Grounded in: b787_literature_review.md sec. 5.4-5.6; L3 fault-propagation
+# ontology (Event_FuelSwitchActuation -> Event_DualEngineThrustLoss);
+# AAIB Preliminary Report (Jul 12, 2025); FAA SAIB NM-18-33 (Dec 17, 2018).
+# -----------------------------------------------------------------------------
+
+# Fuel System dependencies (what the Fuel System needs in order to function)
+b787:FuelSystem b787:dependsOn b787:ElectricalPowerSystem .      # electric boost/transfer pumps, switch solenoids, FQIS
+b787:FuelSystem b787:dependsOn b787:CommonCoreSystem .           # fuel quantity management & control logic hosted on CDN
+b787:FuelSystem b787:dependsOn b787:NitrogenGenerationSystem .   # NGS inerting keeps fuel tanks non-flammable
+
+# Systems that depend on the Fuel System (downstream consumers)
+b787:EngineControlSystem b787:dependsOn b787:FuelSystem .        # FADEC cannot produce thrust without fuel delivery
+b787:APUSystem b787:dependsOn b787:FuelSystem .                  # APU emergency generator is fed from the fuel system
+
+# Fault propagation INTO the Fuel System
+b787:ElectricalPowerSystem b787:canPropagateFaultTo b787:FuelSystem .  # power transients can actuate fuel-switch solenoids (Hypothesis A)
+b787:CommonCoreSystem b787:canPropagateFaultTo b787:FuelSystem .       # CDN corruption can disturb fuel control logic / switch state
+
+# Fault propagation OUT OF the Fuel System (the AI 171 central domino)
+b787:FuelSystem b787:canPropagateFaultTo b787:EngineControlSystem .    # uncommanded fuel CUTOFF -> dual engine thrust loss
+
+# -----------------------------------------------------------------------------
+# CARGO ENVIRONMENTAL MONITORING INTERCONNECTIONS (evidence-based additions)
+# Cargo Environmental Monitoring (bay temperature, smoke detection, ventilation)
+# is electrically powered and CDN-hosted, and draws conditioned air from the ECS.
+# Unlike the Fuel System it is NOT a causal domino toward flight-critical
+# systems; it is a downstream VICTIM of shared electrical/network degradation and
+# an EARLY-WARNING channel to the crew and maintenance. On VT-ANB, "cabin and
+# cargo-related faults" accumulated for weeks and were visible the morning of the
+# crash -- a canary for the same intermittent electrical-integrity degradation
+# that later reached flight-critical systems.
+# Grounded in: b787_literature_review.md sec. 4.x (VT-ANB fault history, "Terrible
+# Teens"), sec. 5.6 cascade; L3 ontology (cabin/cargo faults as early indicator);
+# The Peninsula (2025); AAIB Preliminary Report (Jul 12, 2025).
+# -----------------------------------------------------------------------------
+
+# Cargo monitoring dependencies (what it needs to function)
+b787:CargoSystem b787:dependsOn b787:ElectricalPowerSystem .          # powered smoke/temperature sensors, vent fans, heaters
+b787:CargoSystem b787:dependsOn b787:CommonCoreSystem .               # monitoring & alerting hosted on the CDN
+b787:CargoSystem b787:dependsOn b787:EnvironmentalControlSystem .     # cargo ventilation/temperature uses ECS conditioned air
+
+# Shared infrastructure coupling
+b787:CargoSystem b787:sharesInfrastructureWith b787:CabinSystems .    # cabin & cargo loads on the same degrading power/data infrastructure
+
+# Fault propagation INTO Cargo monitoring (it manifests upstream degradation)
+b787:ElectricalPowerSystem b787:canPropagateFaultTo b787:CargoSystem .  # electrical-integrity degradation surfaced as cargo faults (early warning)
+b787:CommonCoreSystem b787:canPropagateFaultTo b787:CargoSystem .       # CDN degradation surfaced as cargo monitoring faults
+
+# Fault propagation OUT OF Cargo monitoring (signal to the crew)
+b787:CargoSystem b787:canPropagateFaultTo b787:CrewAlertingSystem .     # smoke/temperature alerts (incl. nuisance/false) raised on EICAS
+
+# Backup relationships
+b787:APUSystem b787:providesBackupFor b787:ElectricalPowerSystem .
+
+# Monitoring
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:ElectricalPowerSystem .
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:CommonCoreSystem .
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:EngineControlSystem .
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:FlightControlSystem .
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:HydraulicSystem .
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:FuelSystem .       # fuel quantity / pump & switch health via CMCF-ACMF
+b787:MaintenanceMonitoring b787:monitorsHealthOf b787:CargoSystem .      # cargo bay faults logged via CMCF-ACMF (how the cabin/cargo faults were visible)
