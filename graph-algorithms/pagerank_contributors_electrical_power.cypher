@@ -1,7 +1,7 @@
 // ============================================================================
 // PAGERANK CONTRIBUTORS -- ElectricalPowerSystem (EPS)
 // Boeing 787 high-level systems ontology (L1_high_level_systems.ttl)
-//
+// 
 // PageRank score flows along INCOMING edges:
 //
 //     PR(EPS) = (1 - d)/N  +  d * Σ  PR(v) / outDegree(v)
@@ -17,7 +17,7 @@
 // (b) quantifies how much rank-mass each contributor passes to EPS.
 //
 // Prerequisites:
-//   1. Load the L1 graph:   cypher-shell -f ../ontologies/L1_high_level_systems.cypher
+//   1. Load the L1 graph:   cypher-shell -f ../knowledge-graph/cypher/L1_high_level_systems.cypher
 //      (do NOT run its TEARDOWN section).
 //   2. For the quantified queries (sections 3-4), first persist PageRank scores:
 //      cypher-shell -f centrality_depends_on.cypher        (writes pr_dependsOn)
