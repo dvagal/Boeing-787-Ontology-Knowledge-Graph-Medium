@@ -1,0 +1,908 @@
+{
+  "style": {
+    "font-family": "sans-serif",
+    "background-color": "#ffffff",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#ffffff",
+    "border-width": 4,
+    "border-color": "#000000",
+    "radius": 50,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#000000",
+    "caption-font-size": 50,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "pill",
+    "label-color": "#000000",
+    "label-background-color": "#ffffff",
+    "label-border-color": "#000000",
+    "label-border-width": 4,
+    "label-font-size": 40,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "inline",
+    "detail-orientation": "parallel",
+    "arrow-width": 5,
+    "arrow-color": "#000000",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#000000",
+    "type-background-color": "#ffffff",
+    "type-border-color": "#000000",
+    "type-border-width": 0,
+    "type-font-size": 16,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#000000",
+    "property-font-size": 16,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": 524.7722045730475,
+        "y": 1267.0883397303578
+      },
+      "caption": "Electrical Power\nSystem (EPGSS)",
+      "labels": [
+        "SharedInfrastructure"
+      ],
+      "properties": {
+        "power": "1.45 MW",
+        "buses": "235V AC, 115V AC, ±270V HVDC, 28V DC",
+        "role": "CONVERGENCE HUB"
+      },
+      "style": {
+        "node-color": "#E74C3C",
+        "border-color": "#C0392B",
+        "radius": 130,
+        "caption-color": "#FFFFFF",
+        "caption-font-size": 33,
+        "caption-position": "inside",
+        "label-position": "outside",
+        "label-display": "bare",
+        "label-font-size": 60
+      }
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": 1740.042208359078,
+        "y": 1258.1348707974282
+      },
+      "caption": "Data Network\n(CCS/CDN)",
+      "labels": [
+        "SharedInfrastructure"
+      ],
+      "properties": {
+        "protocol": "ARINC 664",
+        "connects": "22 flight-critical + 28 non-critical",
+        "role": "CONVERGENCE HUB",
+        "vulnerability": "AD 2020-06092 (51-day failure)"
+      },
+      "style": {
+        "node-color": "#E74C3C",
+        "border-color": "#C0392B",
+        "radius": 130,
+        "caption-color": "#FFFFFF",
+        "caption-font-size": 30,
+        "label-display": "bare",
+        "label-position": "outside",
+        "label-font-size": 75
+      }
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": 800.3114294308599,
+        "y": 670.7036098167748
+      },
+      "caption": "Engine Control\n(FADEC)",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "channels": "Dual redundant",
+        "criticality": "Level A"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 120,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare",
+        "label-font-size": 31
+      }
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": 1273.6323580564592,
+        "y": 1600.27969769639
+      },
+      "caption": "Flight Control\n(FCM L/R/C)",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "type": "Fly-by-wire",
+        "modules": "3 (Left, Right, Center)",
+        "criticality": "Level A"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 120,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare"
+      }
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": 1096.3060085410098,
+        "y": 1044.9490107296012
+      },
+      "caption": "Hydraulic\nSystem",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "systems": "Left, Right, Center",
+        "pumps": "Engine-driven + Electric Motor Pumps"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 105,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n5",
+      "position": {
+        "x": 1369.034527576408,
+        "y": 2166.3645027253137
+      },
+      "caption": "Horizontal\nStabilizer",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "control": "EMCU + Position Sensors",
+        "AD": "AD 2019-19013 (pivot pin)"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 105,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare"
+      }
+    },
+    {
+      "id": "n6",
+      "position": {
+        "x": 2327.3099321587083,
+        "y": 919.0756923753329
+      },
+      "caption": "Navigation &\nFlight Mgmt",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {},
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 135,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": 1096.3060085410098,
+        "y": 360.8879147965339
+      },
+      "caption": "Crew Alerting\n& Displays",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "includes": "EICAS, PFD, stall/overspeed warnings"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 135,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": 15.979814673243993,
+        "y": 306.54901355594956
+      },
+      "caption": "Fuel System",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "includes": "Fuel control switches",
+        "SAIB": "NM-18-33 (switch locking)"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 115,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n9",
+      "position": {
+        "x": 124.74081579885333,
+        "y": 914.0537207547419
+      },
+      "caption": "APU\n(Backup Power)",
+      "labels": [
+        "FlightCriticalSystem"
+      ],
+      "properties": {
+        "constraint": "Requires stable HV source to start",
+        "vulnerability": "Auto-inhibits under arc conditions"
+      },
+      "style": {
+        "node-color": "#E67E22",
+        "border-color": "#D35400",
+        "radius": 115,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside",
+        "label-font-size": 41
+      }
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": 899.6941796166407,
+        "y": 1974.896295244927
+      },
+      "caption": "Environmental\nControl (ECS)",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {
+        "includes": "Cabin Air Compressors, Aft Zonal Dryer",
+        "power": "±270V HVDC"
+      },
+      "style": {
+        "node-color": "#3498DB",
+        "border-color": "#2980B9",
+        "radius": 120,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare",
+        "caption-font-size": 56
+      }
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": -229.77488162252345,
+        "y": 1774.6150550842133
+      },
+      "caption": "Nitrogen Generation\n(NGS / Fire Inerter)",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {
+        "power": "±270V HVDC",
+        "status_AI171": "CAT A MEL - inhibited"
+      },
+      "style": {
+        "node-color": "#3498DB",
+        "border-color": "#2980B9",
+        "radius": 135,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n12",
+      "position": {
+        "x": 1862.8402763854235,
+        "y": 160.69738761304416
+      },
+      "caption": "In-Flight\nEntertainment",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {
+        "shares": "CCS network + power buses with FADEC"
+      },
+      "style": {
+        "node-color": "#3498DB",
+        "border-color": "#2980B9",
+        "radius": 115,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare"
+      }
+    },
+    {
+      "id": "n13",
+      "position": {
+        "x": 2049.857483365509,
+        "y": 463.92472855626386
+      },
+      "caption": "Cabin Systems\n(Light/Crew Call)",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {},
+      "style": {
+        "node-color": "#3498DB",
+        "border-color": "#2980B9",
+        "radius": 135,
+        "caption-color": "#FFFFFF",
+        "label-position": "outside",
+        "label-display": "bare"
+      }
+    },
+    {
+      "id": "n14",
+      "position": {
+        "x": 1468.3474719332314,
+        "y": 228.19736351261804
+      },
+      "caption": "Maintenance\nMonitoring\n(CMCF/ACMF)",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {
+        "vulnerability": "Depends on CCS it monitors"
+      },
+      "style": {
+        "node-color": "#9B59B6",
+        "border-color": "#8E44AD",
+        "radius": 115,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    },
+    {
+      "id": "n15",
+      "position": {
+        "x": 452.5491648643617,
+        "y": 216.69589033514058
+      },
+      "caption": "Cargo Environmental\nMonitoring",
+      "labels": [
+        "NonFlightCriticalSystem"
+      ],
+      "properties": {
+        "includes": "Bay temperature, smoke detection, ventilation",
+        "role": "Early-warning canary (fault sink, not causal domino)",
+        "status_AI171": "Cabin/cargo faults accumulating for weeks pre-crash"
+      },
+      "style": {
+        "node-color": "#3498DB",
+        "border-color": "#2980B9",
+        "radius": 115,
+        "caption-color": "#FFFFFF",
+        "label-display": "bare",
+        "label-position": "outside"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n1",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "power"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n1",
+      "fromId": "n2",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n2",
+      "fromId": "n2",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "data"
+      },
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n3",
+      "fromId": "n3",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n4",
+      "fromId": "n3",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n5",
+      "fromId": "n4",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "EMP power"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n6",
+      "fromId": "n4",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n7",
+      "fromId": "n5",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "115V/±130V/28V"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n8",
+      "fromId": "n5",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n9",
+      "fromId": "n6",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n10",
+      "fromId": "n7",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n11",
+      "fromId": "n10",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "±270V HVDC"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n12",
+      "fromId": "n11",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "±270V HVDC"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n13",
+      "fromId": "n12",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n14",
+      "fromId": "n13",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {},
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n15",
+      "fromId": "n14",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "vulnerability": "monitors the system it depends on"
+      },
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n16",
+      "fromId": "n9",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "constraint": "needs stable HV to start"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n17",
+      "fromId": "n0",
+      "toId": "n1",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "power transient"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 5
+      }
+    },
+    {
+      "id": "n18",
+      "fromId": "n0",
+      "toId": "n2",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "conducted transient to FADEC"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 5
+      }
+    },
+    {
+      "id": "n19",
+      "fromId": "n0",
+      "toId": "n3",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "bus instability to FCMs"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n20",
+      "fromId": "n1",
+      "toId": "n2",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "data corruption"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n21",
+      "fromId": "n1",
+      "toId": "n3",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "data corruption"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n22",
+      "fromId": "n1",
+      "toId": "n14",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "monitoring system disabled"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n23",
+      "fromId": "n10",
+      "toId": "n0",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "moisture → dielectric breakdown → arc"
+      },
+      "style": {
+        "arrow-color": "#F39C12",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n24",
+      "fromId": "n8",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "electric pumps, switch solenoids, FQIS"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n25",
+      "fromId": "n8",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "fuel control logic on CDN"
+      },
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n26",
+      "fromId": "n8",
+      "toId": "n11",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "tank inerting (NGS) safety"
+      },
+      "style": {
+        "arrow-color": "#95A5A6",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n27",
+      "fromId": "n2",
+      "toId": "n8",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "fuel delivery for thrust"
+      },
+      "style": {
+        "arrow-color": "#95A5A6",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n28",
+      "fromId": "n9",
+      "toId": "n8",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "APU fuel feed"
+      },
+      "style": {
+        "arrow-color": "#95A5A6",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n29",
+      "fromId": "n0",
+      "toId": "n8",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "transient actuates fuel-switch solenoids (Hypothesis A)"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 4
+      }
+    },
+    {
+      "id": "n30",
+      "fromId": "n1",
+      "toId": "n8",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "CDN corruption of fuel control state"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 3
+      }
+    },
+    {
+      "id": "n31",
+      "fromId": "n8",
+      "toId": "n2",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "uncommanded CUTOFF → dual engine thrust loss",
+        "note": "AI 171 central domino"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 5
+      }
+    },
+    {
+      "id": "n32",
+      "fromId": "n15",
+      "toId": "n0",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "sensors, vent fans, heaters"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n33",
+      "fromId": "n15",
+      "toId": "n1",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "monitoring/alerting on CDN"
+      },
+      "style": {
+        "arrow-color": "#8E44AD",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n34",
+      "fromId": "n15",
+      "toId": "n10",
+      "type": "DEPENDS_ON",
+      "properties": {
+        "dependency": "ECS conditioned air"
+      },
+      "style": {
+        "arrow-color": "#95A5A6",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n35",
+      "fromId": "n0",
+      "toId": "n15",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "electrical-integrity degradation → cargo faults (early warning)"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n36",
+      "fromId": "n1",
+      "toId": "n15",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "CDN degradation → cargo monitoring faults"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    },
+    {
+      "id": "n37",
+      "fromId": "n15",
+      "toId": "n7",
+      "type": "CAN_PROPAGATE_FAULT_TO",
+      "properties": {
+        "mechanism": "smoke/temperature alerts (incl. nuisance) on EICAS"
+      },
+      "style": {
+        "arrow-color": "#E74C3C",
+        "arrow-width": 2
+      }
+    }
+  ]
+}
