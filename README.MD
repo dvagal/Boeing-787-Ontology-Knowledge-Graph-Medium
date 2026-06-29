@@ -1,6 +1,6 @@
 <img width="2052" height="1414" alt="image" src="https://github.com/dvagal/Boeing-787-Ontology-Knowledge-Graph-Medium/blob/main/images/nano-banana-2_Professional_graphic_design_3D_render_generate_a_detailed_3D_wireframe_transpare-0%20(2).jpg" />
 
-# Boeing 787 Dreamliner System Ontologies
+# Boeing 787 Dreamliner High level Systems Ontology
 
 **Version**: 1.0
 **Date**: June 14, 2026
