@@ -9,7 +9,8 @@
 
 ## Overview
 
-This repo contains a high level Ontologly that models the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. The ontology are encoded in OWL/Turtle (.ttl) format, compatible with Protege, Apache Jena, and other semantic web tools.
+This repo contains a high level Ontologly that models the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. Our modeling choice to develop an initial Ontology and a Knowledge Graph was driven not by the exhaustive list of aircraft systems, but by the AI 171 air disaster event. We worked backwards and leveraged the knowledge grounded in research that is focused on fault detection/isolation of Boeing systems (please see References section).
+The ontology is encoded in OWL/Turtle (.ttl) format, compatible with Protege, Apache Jena, and other semantic web tools.
 
 | Level | File | Grain | Audience | Focus |
 |-------|------|-------|----------|-------|
@@ -19,7 +20,7 @@ This repo contains a high level Ontologly that models the Boeing 787 Dreamliner'
 
 ## L1: High-Level Systems Ontology
 
-**Purpose**: Provides a bird's-eye view of how the 787's major systems relate to each other. Designed to be understandable by non-technical stakeholders (executives, journalists, lawyers, parliamentarians).
+**Purpose**: Provides a bird's-eye view of how the 787's major systems relate to each other. Designed to be understandable by non-technical stakeholders.
 
 **Entity Classes**:
 - `FlightCriticalSystem` -- Systems whose failure can cause aircraft loss
@@ -115,5 +116,39 @@ RETURN path;
   of `FuelSystem` partly reflects that modelling choice.
 
 ---
+
+# References
+
+[1] Hamilton Sundstrand Corporation. (2011). *Boeing 787 Electrical System: System & Component Description/Operation, and Maintenance Training Course.* ECCN 9E991, Rev. 2011FEB16.
+
+[2] Federal Aviation Administration. (2007). *Special Conditions: Boeing Model 787-8 Airplane; Electrical Power Conversion and Distribution System.* Docket No. FAA-2007-27656.
+
+[3] Pandian, G., Pecht, M., Zio, E., & Hodkiewicz, M. (2020). Data-driven reliability analysis of Boeing 787 Dreamliner. *Chinese Journal of Aeronautics*, 33(7).
+
+[4] Liu, Q., Liang, T., Huang, Z., & Dinavahi, V. (2019). Real-Time FPGA-Based Hardware Neural Network for Fault Detection and Isolation in More Electric Aircraft. *IEEE Access*. DOI: 10.1109/ACCESS.2019.2950918.
+
+[5] The Peninsula. (2025). *Part 1: Air India 171 Crash — No-Go Fault, Electric Arc.* https://thepeninsula.org.in/blog/part-1-air-india-171-crash-no-go-fault-electric-arc
+
+[6] Aircraft Accident Investigation Bureau (AAIB), India. (2025). *Preliminary Report: Air India Flight 171, VT-ANB, June 12, 2025.* (Released July 12, 2025.)
+
+[7] Federal Aviation Administration. (2020). *Airworthiness Directive 2020-06092* (Model 787-8/-9/-10). Common Core System 51-day stale-data monitoring vulnerability. Effective April 7, 2020.
+
+[8] IOActive. (2020). *A Reverse Engineer's Perspective on the Boeing 787 "51 days" Airworthiness Directive.* https://www.ioactive.com/reverse-engineers-perspective-on-the-boeing-787-51-days-airworthiness-directive/
+
+[9] Federal Aviation Administration. (2018). *Special Airworthiness Information Bulletin NM-18-33.* Fuel control switch locking feature potential disengagement. December 17, 2018.
+
+[10] Federal Aviation Administration. (2019). *Airworthiness Directive 2019-19013.* Boeing 787 horizontal stabilizer pivot pin assembly inspection.
+
+[11] Federal Aviation Administration. (2025). *Airworthiness Directive 2025-09-12* (Model 787-8/-9/-10). Water leakage into electronics equipment bays. Effective June 18, 2025.
+
+[12] National Transportation Safety Board. (2014). *Aircraft Incident Report: Auxiliary Power Unit Battery Fire, Japan Airlines Boeing 787-8, JA829J.* NTSB/AIR-14/01.
+
+[13] Safety Matters Foundation of India. (2025). *Photogrammetric analysis of Air India Flight 171 RAM Air Turbine deployment timing.*
+
+[14] W3C. (2012). *OWL 2 Web Ontology Language Primer (Second Edition).* W3C Recommendation. https://www.w3.org/TR/owl2-primer/
+
+[15] W3C. (2014). *RDF 1.1 Turtle — Terse RDF Triple Language.* W3C Recommendation. https://www.w3.org/TR/turtle/
+
+[16] Noy, N. F., & McGuinness, D. L. (2001). *Ontology Development 101: A Guide to Creating Your First Ontology.* Stanford Knowledge Systems Laboratory Technical Report KSL-01-05.
 
 
