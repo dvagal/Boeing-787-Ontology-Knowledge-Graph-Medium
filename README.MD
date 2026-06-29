@@ -85,7 +85,7 @@ RETURN path;
 
 **`CAN_PROPAGATE_FAULT_TO`:**
 - **PageRank (source / REVERSE):** **`ElectricalPowerSystem`** and
-  **`CommonCoreSystem`** as the most dangerous originators — faults there reach
+  **`CommonCoreSystem`** as the most high risk originators — faults there reach
   the widest set of systems.
 - **PageRank (sink / NATURAL):** **`EngineControlSystem`** as a major sink —
   multiple paths (Electrical→…, CCS→…, **Fuel→Engine**) converge on it.
