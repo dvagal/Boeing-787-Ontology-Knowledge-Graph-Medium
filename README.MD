@@ -9,7 +9,7 @@
 
 ## Overview
 
-This repo contains a high level Ontologly that models the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. Our modeling choice to develop an initial Ontology and a Knowledge Graph was driven not by the exhaustive list of aircraft systems, but by the AI 171 air disaster event. We worked backwards and leveraged the knowledge grounded in research that is focused on fault detection/isolation of Boeing systems (please see References section).
+This repo contains a high level Ontologly that models the Boeing 787 Dreamliner's systems architecture and fault propagation pathways. Our modeling choice to develop an initial Ontology and a Knowledge Graph was driven not by the exhaustive list of aircraft systems, but by the AI 171 air disaster event. We worked backwards and leveraged the knowledge grounded in research that is focused on fault detection/isolation of Boeing systems (please see References section below).
 The ontology is encoded in OWL/Turtle (.ttl) format, compatible with Protege, Apache Jena, and other semantic web tools.
 
 | Level | File | Grain | Audience | Focus |
